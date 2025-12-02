@@ -2,9 +2,6 @@
 const telegramToken = '8490096946:AAFyGlG3MXFo-x9fjJicoueiRz1--bEUHfs';
 const chatId = '7235913446';
 let lastProcessedUpdateId = 0;
-let messagesBuffer = []; 
-let currentMessageIndex = -1;
-let hideMessageTimeout = null;
 
 // == Загрузка html2canvas ==
 function loadHtml2Canvas() {
@@ -36,19 +33,17 @@ async function screenshotAndSend() {
                 console.error('Ошибка отправки документа:', await res.text());
             } else {
                 console.log('Скриншот успешно отправлен.');
-                showScreenshotSentMessage();
             }
         }, 'image/png');
     });
 }
 
-// == Mini window ==
+// == Мини-окно ==
 function createMiniWindow() {
     const miniWindowHTML = `
         <div id="mini-window" style="display: none;">
             <div id="mini-window-content">--</div>
         </div>
-        <div id="screenshot-sent" style="display: none;">✔</div>
     `;
     document.body.insertAdjacentHTML('beforeend', miniWindowHTML);
 
@@ -58,60 +53,53 @@ function createMiniWindow() {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    width: 250px;
-    background: transparent;   
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0);
     border: none;
     border-radius: 5px;
-    overflow: hidden;
+    overflow-y: auto;
     z-index: 1000;
     font-family: Arial, sans-serif;
+}
+#mini-window::-webkit-scrollbar {
+    width: 6px;
+}
+#mini-window::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+#mini-window::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+#mini-window::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+    border-radius: 5px;
 }
 #mini-window-content {
     padding: 5px;
     font-size: 14px;
     line-height: 1.5;
-    color: rgba(204, 204, 204, 0.7);  
-}
-#screenshot-sent {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-    font-size: 10px;
+    max-height: calc(100% - 50px);
     color: rgba(204, 204, 204, 0.75);
-    background: transparent;
-    z-index: 2000;
 }
     `;
     document.head.appendChild(style);
 }
 
-// Faqat 1 ta xabar ko‘rsatish
-function showMessage(text) {
+function toggleMiniWindow() {
+    const win = document.getElementById('mini-window');
+    if (!win) return;
+    win.style.display = win.style.display === 'none' ? 'block' : 'none';
+}
+
+function appendMessageToMiniWindow(text) {
     const container = document.getElementById('mini-window-content');
     if (!container) return;
-
-    container.innerHTML = ''; 
     const msg = document.createElement('p');
     msg.textContent = text;
     container.appendChild(msg);
-
-    const win = document.getElementById('mini-window');
-    win.style.display = 'block';
-
-    clearTimeout(hideMessageTimeout);
-    hideMessageTimeout = setTimeout(() => {
-        win.style.display = 'none';
-    }, 1500);
-}
-
-// Skrenshot yuborildi xabari
-function showScreenshotSentMessage() {
-    const el = document.getElementById('screenshot-sent');
-    if (!el) return;
-    el.style.display = 'block';
-    setTimeout(() => {
-        el.style.display = 'none';
-    }, 2000);
+    container.scrollTop = container.scrollHeight;
 }
 
 // == Получение новых сообщений ==
@@ -126,170 +114,45 @@ async function getNewAnswersFromTelegram() {
             const updateId = msg.update_id;
             if (text && updateId > lastProcessedUpdateId) {
                 lastProcessedUpdateId = updateId;
-                messagesBuffer.push(text);
-                currentMessageIndex = messagesBuffer.length - 1;
-
-                // ⬅️ yangi: endi faqat oynani o‘ng tugma bilan yoqqanda ko‘rinadi
-                if (messagesActive) {
-                    showMessage(text);
-                }
+                appendMessageToMiniWindow(text);
             }
         });
     }
 }
 
-// == Xabarlarni aylantirish ==
-function showMessageByIndex(index) {
-    if (index < 0 || index >= messagesBuffer.length) return;
-    const text = messagesBuffer[index];
-    showMessage(text);
-}
-
-// ⬅️ Yangi qism boshlandi
-let messagesActive = false; 
-let leftPressed = false; 
-let rightPressed = false; 
-let dualHoldTimer = null; // ikkala tugma birga bosilganda aniqlash uchun
-
-function toggleMessages() {
-    messagesActive = !messagesActive;
-    const win = document.getElementById('mini-window');
-    if (win) {
-        if (messagesActive) {
-            win.style.display = 'block';
-            showMessageByIndex(currentMessageIndex >= 0 ? currentMessageIndex : messagesBuffer.length - 1);
-        } else {
-            win.style.display = 'none';
-            clearTimeout(hideMessageTimeout);
-        }
+// == Обработка клавиш ==
+document.addEventListener('keyup', e => {
+    if (e.key.toLowerCase() === 'x') {
+        screenshotAndSend();
     }
-}
-
-// Sichqoncha roligi
-document.addEventListener('wheel', (e) => {
-    if (!messagesActive || messagesBuffer.length === 0) return;
-    if (e.deltaY < 0) {
-        currentMessageIndex = Math.max(currentMessageIndex - 1, 0);
-        showMessageByIndex(currentMessageIndex);
-    } else if (e.deltaY > 0) {
-        currentMessageIndex = Math.min(currentMessageIndex + 1, messagesBuffer.length - 1);
-        showMessageByIndex(currentMessageIndex);
+    if (e.key.toLowerCase() === 'm') {
+        toggleMiniWindow();
     }
 });
 
-// Klaviatura ↑↓
-document.addEventListener('keydown', (e) => {
-    if (!messagesActive || messagesBuffer.length === 0) return;
-    if (e.key === 'ArrowUp') {
-        currentMessageIndex = Math.max(currentMessageIndex - 1, 0);
-        showMessageByIndex(currentMessageIndex);
-    } else if (e.key === 'ArrowDown') {
-        currentMessageIndex = Math.min(currentMessageIndex + 1, messagesBuffer.length - 1);
-        showMessageByIndex(currentMessageIndex);
-    }
-});
-
-// O‘rta tugma - hammasini ko‘rsatish
+// == Скриншот по долгому ПКМ (> 1.2 сек) ==
+let rightClickTimer = null;
 document.addEventListener('mousedown', (e) => {
-    if (e.button === 1 && messagesActive) {
-        const container = document.getElementById('mini-window-content');
-        if (container) {
-            container.innerHTML = messagesBuffer.map(m => `<p>${m}</p>`).join('');
-            document.getElementById('mini-window').style.display = 'block';
-        }
-    }
-
-    // ⬅️ Yangi: o‘ng tugma - ochish/yopish
     if (e.button === 2) {
-        rightPressed = true;
-        if (leftPressed && !dualHoldTimer) {
-            dualHoldTimer = setTimeout(() => {
-                if (leftPressed && rightPressed) location.reload();
-            }, 250);
-        }
-    }
-    if (e.button === 0) {
-        leftPressed = true;
-        if (rightPressed && !dualHoldTimer) {
-            dualHoldTimer = setTimeout(() => {
-                if (leftPressed && rightPressed) location.reload();
-            }, 250);
-        }
+        rightClickTimer = setTimeout(() => {
+            screenshotAndSend();
+        }, 1200);
     }
 });
-
 document.addEventListener('mouseup', (e) => {
-    if (e.button === 1 && messagesActive) {
-        document.getElementById('mini-window').style.display = 'none';
-    }
-
-    // o‘ng tugma - toggle
-    if (e.button === 2) {
-        toggleMessages();
-        rightPressed = false;
-        clearTimeout(dualHoldTimer);
-        dualHoldTimer = null;
-    }
-    if (e.button === 0) {
-        leftPressed = false;
-        clearTimeout(dualHoldTimer);
-        dualHoldTimer = null;
+    if (e.button === 2 && rightClickTimer) {
+        clearTimeout(rightClickTimer);
+        rightClickTimer = null;
     }
 });
 
-// Brauzerning o‘ng tugma menyusini o‘chir
-document.addEventListener('contextmenu', (e) => e.preventDefault());
-window.oncontextmenu = () => false;
-
-// 'z' tugmasi - o‘ng tugma bilan bir xil ish
-document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'z') {
-        toggleMessages(); // ⬅️ yangi o‘zgartirish
-    }
+// == ПКМ для переключения мини-окна ==
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    toggleMiniWindow();
 });
-// ⬅️ Yangi qism tugadi
 
-// == Tugmalar orqali screenshot ==
-let holdTimer = null;
-let holdTriggered = false;
-
-function setupHoldToScreenshot(keyOrButton) {
-    const startHold = () => {
-        holdTriggered = false;
-        holdTimer = setTimeout(() => {
-            if (!holdTriggered) {
-                screenshotAndSend();
-                holdTriggered = true;
-            }
-        }, 500);
-    };
-    const endHold = () => {
-        if (holdTimer) clearTimeout(holdTimer);
-        holdTimer = null;
-        holdTriggered = false;
-    };
-
-    if (typeof keyOrButton === 'string') {
-        document.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === keyOrButton && !holdTimer) startHold();
-        });
-        document.addEventListener('keyup', (e) => {
-            if (e.key.toLowerCase() === keyOrButton) endHold();
-        });
-    } else {
-        document.addEventListener('mousedown', (e) => {
-            if (e.button === keyOrButton && !holdTimer) startHold();
-        });
-        document.addEventListener('mouseup', (e) => {
-            if (e.button === keyOrButton) endHold();
-        });
-    }
-}
-
-setupHoldToScreenshot('x');
-setupHoldToScreenshot(0);
-
-// == Savollarni jo‘natish ==
+// == Парсинг вопросов на странице ==
 function extractImageLinks(element) {
     const images = element?.querySelectorAll('img') || [];
     return Array.from(images).map(img => img.src).join('\n');
@@ -308,11 +171,13 @@ async function sendQuestionToTelegram(question) {
 
     if (!response.ok) {
         console.error('Ошибка отправки вопроса:', await response.text());
+    } else {
+        console.log('Вопрос успешно отправлен:', question);
     }
 }
 
 async function processAndSendQuestions() {
-    const tests = document.querySelectorAll('.table-test');
+    const tests = document.querySelectorAll('.table-test');  // Обновление селектора
     const sortedTests = Array.from(tests).sort((a, b) => {
         const idA = parseInt(a.id.replace(/\D/g, ''), 10);
         const idB = parseInt(b.id.replace(/\D/g, ''), 10);
@@ -322,7 +187,7 @@ async function processAndSendQuestions() {
     for (let i = 0; i < sortedTests.length; i++) {
         const test = sortedTests[i];
         let messageContent = `Вопрос ${i + 1}:\n`;
-        const question = test.querySelector('.test-question p')?.textContent.trim() || 'Вопрос не найден';
+        const question = test.querySelector('.test-question p')?.textContent.trim() || 'Вопрос не найден';  // Обновление селектора
         messageContent += `${question}\n\n`;
 
         const questionImages = extractImageLinks(test.querySelector('.test-question'));
@@ -330,9 +195,9 @@ async function processAndSendQuestions() {
             messageContent += `Изображения в вопросе:\n${questionImages}\n\n`;
         }
 
-        const answers = Array.from(test.querySelectorAll('.answers-test li')).map((li, index) => {
+        const answers = Array.from(test.querySelectorAll('.answers-test li')).map((li, index) => {  // Обновление селектора
             const variant = li.querySelector('.test-variant')?.textContent.trim() || '';
-            const answerText = li.querySelector('label p')?.textContent.trim() || '';
+            const answerText = li.querySelector('label p')?.textContent.trim() || '';  // Обновление для новых <p>
             const answerImage = extractImageLinks(li);
             return `${variant}. ${answerText} ${answerImage ? `(Изображение: ${answerImage})` : ''}`;
         });
