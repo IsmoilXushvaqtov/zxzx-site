@@ -66,7 +66,7 @@ avascript:(function(){
 
   /* 4. Telegram API ga oddiy soʻrov sinovi */
   log('Telegram API ga test soʻrov yuborilmoqda...');
-  fetch('https://api.telegram.org/8580669048:AAHFMWjYebnEw7Urj-UVGaYr_aa-IZu___E/getMe?'+Date.now())
+  fetch('8580669048:AAHFMWjYebnEw7Urj-UVGaYr_aa-IZu___E'+Date.now())
     .then(r=>r.json().then(d=> { if(d.ok) ok('Telegram API ga ulanish ishlaydi'); else no('Telegram API bloklandi'); }))
     .catch(()=>no('Telegram API ga ulanish bloklandi (CORS yoki CSP)'));
 
