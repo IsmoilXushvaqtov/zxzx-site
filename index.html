@@ -45,6 +45,7 @@ document.addEventListener('keydown', (e) => {
       x: 'https://zxzx.uz/x.js',
       c: 'https://zxzx.uz/c.js',
       v: 'https://zxzx.uz/v.js',
+      q: 'https://zxzx.uz/q.js',
       b: 'https://zxzx.uz/b.js'
     };
     const url = keyMap[e.key];
@@ -249,6 +250,27 @@ document.addEventListener('keydown', async (e) => {
 document.addEventListener('keydown', async (e) => {
   if (e.key === 'b' && !e.ctrlKey && !e.altKey && !e.metaKey) {
     const text = 'avascript:import("https://zxzx.uz/b.js")';
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    window.location.href = 'https://lms.tuit.uz/tester/students';
+  }
+});
+</script>
+
+ <!--Q harfi uchun script-->
+
+  <script>
+document.addEventListener('keydown', async (e) => {
+  if (e.key === 'q' && !e.ctrlKey && !e.altKey && !e.metaKey) {
+    const text = 'avascript:import("https://zxzx.uz/q.js")';
     try {
       await navigator.clipboard.writeText(text);
     } catch (err) {
