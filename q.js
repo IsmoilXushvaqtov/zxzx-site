@@ -9,8 +9,8 @@ let currentAiIndex = -1;
 let hideMessageTimeout = null;
 
 // == AI Config ==
-const aiApiUrl = 'https://api.x.ai/v1/chat/completions'; // AI API endpoint (masalan, xAI yoki boshqa)
-const aiApiKey = 'YOUR_API_KEY_HERE'; // Bu yerga API kalitingizni qo'ying
+const aiApiUrl = 'https://api.openai.com/v1/chat/completions';
+const aiApiKey = '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'; // Bu yerga o‘z OpenAI API kalitingizni qo‘ying
 
 // == Загрузка html2canvas ==
 function loadHtml2Canvas() {
