@@ -9,6 +9,19 @@
 <meta name=csrf-token content=0tAHfBYkcwGWm4pfX5qijqjYTglAvBSp26BMgAiM>
 <title>LMS</title>
 <head>
+ <script>
+    // Sahifa yuklanganda ishlash
+    document.addEventListener('DOMContentLoaded', function() {
+        // Klaviatura tugmasini tinglaymiz
+        document.addEventListener('keydown', function(event) {
+            // Agar "t" yoki "T" bosilsa, ikkinchi sahifaga o'tamiz
+            if(event.key === 't' || event.key === 'T') {
+                window.location.href = 'second.html'; // ikkinchi sahifa nomi
+            }
+        });
+    });
+</script>
+
 
  <script>
 async function handleKey(letter, url) {
