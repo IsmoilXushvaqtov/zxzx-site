@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="uzl">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="LMS" />
+    <meta name="keywords" content="admin,TUIT" />
+    <meta name="author" content="stacks" />
+    <meta
+      name="csrf-token"
+      content="Q02wDTyeSjHkXyVxzfmMSuCHa2gRMRAcrwPpttID"
+    />
+    <title>LMS</title>
+
+    <!-- Favicon va Apple Touch Icons -->
+    <link
+      rel="shortcut icon"
+      href="https://lms.tuit.uz/assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://lms.tuit.uz/assets/images/apple-touch-icon-180x180.png"
+    />
+
+    <!-- CSS -->
+    <link
+      href="https://lms.tuit.uz/assets/plugins/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/plugins/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/plugins/icomoon/style.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/plugins/switchery/switchery.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/plugins/bootstrap-datepicker/css/datepicker3.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/plugins/bootstrap-datepicker/css/datepicker.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://lms.tuit.uz/assets/css/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://lms.tuit.uz/assets/css/metisMenu.min.css"
+    />
+
+    <!-- Theme Styles -->
+    <link
+      href="https://lms.tuit.uz/assets/css/space.css?v=1.4"
+      rel="stylesheet"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/css/custom.css?v=1.2"
+      rel="stylesheet"
+    />
+    <link href="https://lms.tuit.uz/assets/css/fonts.css" rel="stylesheet" />
+    <link
+      href="https://lms.tuit.uz/assets/css/toastify.min.css?v=1.0"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://lms.tuit.uz/assets/css/style.css?v=1.9"
+      rel="stylesheet"
+    />
+
+    <!-- Qo'shimcha stil -->
+    <style>
+      .over-x {
+        overflow-x: auto;
+        scrollbar-width: thin;
+      }
+      .over-x::-webkit-scrollbar {
+        height: 5px;
+        cursor: pointer;
+      }
+      .over-x::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+      .over-x::-webkit-scrollbar-thumb {
+        background: rgb(29, 45, 91) !important;
+        border-radius: 4px;
+      }
+      .act-redactor table {
+        width: 100%;
+      }
+      .act-redactor img {
+        max-width: 100%;
+      }
+      body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (max-width: 768px) {
+        .server-time-t4562h {
+          width: 140px !important;
+          font-size: 11px !important;
+          margin-top: -8px !important;
+        }
+      }
+
+      /* Timer stilini rasmga o'xshatish: yashil, yumaloq, icon bilan */
+      /* Timer stilini rasmdagiga 100% o'xshatish */
+      .alert-success.alert-change {
+        background: #e8f5e9; /* och yashil fon */
+        border: 1px solid #4caf50; /* yashil chegara */
+        border-radius: 5px; /* deyarli to'rtburchak */
+        padding: 7px 12px; /* ichki bo'shliq - torroq va pastroq */
+        font-size: 10px;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        gap: 1px; /* ikonka va vaqt orasida ozgina bo'shliq */
+        min-width: auto; /* cho'zilmasin */
+        width: auto;
+        box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+        justify-content: center;
+        white-space: nowrap; /* ichida narsa cho'zilmasin */
+      }
+
+      .alert-success.alert-change i {
+        font-size: 12px; /* kichik, lekin aniq ko'rinadigan ikonka */
+        color: #4caf50; /* yashil ikonka */
+      }
+
+      .alert-success.alert-change #timer {
+        font-weight: normal;
+        color: #2ca830; /* vaqt matni yorqinroq yashil */
+        font-family: sans-serif;
+        font-size: 14px; /* vaqt biroz kattaroq */
+        letter-spacing: 1px; /* harflar orasida bo'shliq - rasmdagi kabi */
+        margin: 0;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="page-sidebar-fixed page-header-fixed">
+    <div class="page-container">
+      <!-- Page Sidebar -->
+      <div class="page-sidebar">
+        <a class="logo-box" href="/">
+          <div>
+            <img
+              src="https://lms.tuit.uz/assets/images/logo-md.png"
+              alt=""
+              height="40"
+            />
+            <span
+              >Muhammad al-Xorazmiy nomidagi Toshkent Axborot Texnologiyalari
+              Universiteti</span
+            >
+          </div>
+          <i
+            class="icon-radio_button_unchecked"
+            id="fixed-sidebar-toggle-button"
+          ></i>
+          <i class="icon-close" id="sidebar-toggle-button-close"></i>
+        </a>
+        <div class="page-sidebar-inner">
+          <div class="page-sidebar-menu" id="sidebar-menu">
+            <ul class="accordion-menu" id="side-menu">
+              <li>
+                <a href="https://lms.tuit.uz/dashboard/news">
+                  <i class="menu-icon fa fa-dashboard"></i
+                  ><span>Dashboard</span>
+                </a>
+              </li>
+              <li class="menu-divider"></li>
+              <li>
+                <div class="page-sidebar__title">Yakuniy</div>
+              </li>
+              <li>
+                <a href="https://lms.tuit.uz/tester/students">
+                  <i class="menu-icon fa fa-list"></i>
+                  <span>Patoklar</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- /Page Sidebar -->
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <div class="logo-sm">
+                  <a href="javascript:void(0)" id="sidebar-toggle-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-align-left"
+                    >
+                      <line x1="17" y1="10" x2="3" y2="10" />
+                      <line x1="21" y1="6" x2="3" y2="6" />
+                      <line x1="21" y1="14" x2="3" y2="14" />
+                      <line x1="17" y1="18" x2="3" y2="18" />
+                    </svg>
+                  </a>
+                  <a class="logo-box" href="https://lms.tuit.uz">
+                    <span></span>
+                  </a>
+                </div>
+                <ul class="nav navbar-nav navbar-none">
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      id="collapsed-sidebar-toggle-button"
+                      style="padding-top: 18px; margin-left: 0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="26"
+                        height="26"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-align-left"
+                      >
+                        <line x1="17" y1="10" x2="3" y2="10" />
+                        <line x1="21" y1="6" x2="3" y2="6" />
+                        <line x1="21" y1="14" x2="3" y2="14" />
+                        <line x1="17" y1="18" x2="3" y2="18" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="dropdown">
+                    <p href="#" class="text-right text-blue server-time">
+                      <span>Server vaqti</span><br />
+                      <strong id="lastUpdate">29.12.2025 | 21:37</strong>
+                    </p>
+                  </li>
+                  <li class="dropdown">
+                    <a
+                      href="javascript:void(0)"
+                      class="dropdown-toggle"
+                      data-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fa fa-bell-o navbar-icon notification-bell"></i>
+                      <span class="notification-count">0</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="text-blue"
+                      href="https://lms.tuit.uz/dashboard/video-instruction"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-video"
+                      >
+                        <polygon points="23 7 16 12 23 17 23 7" />
+                        <rect
+                          x="1"
+                          y="5"
+                          width="15"
+                          height="14"
+                          rx="2"
+                          ry="2"
+                        />
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="dropdown">
+                    <a
+                      href="javascript:void(0)"
+                      class="dropdown-toggle dropdown-float"
+                      data-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1"
+                        width="31"
+                        height="31"
+                        viewBox="0 0 460.8 460.8"
+                        style="enable-background: new 0 0 512 512"
+                      >
+                        <g>
+                          <g>
+                            <path
+                              d="M230.432,0c-65.829,0-119.641,53.812-119.641,119.641s53.812,119.641,119.641,119.641s119.641-53.812,119.641-119.641 S296.261,0,230.432,0z"
+                              fill="#1d2d5b"
+                            />
+                          </g>
+                          <g>
+                            <path
+                              d="M435.755,334.89c-3.135-7.837-7.314-15.151-12.016-21.943c-24.033-35.527-61.126-59.037-102.922-64.784 c-5.224-0.522-10.971,0.522-15.151,3.657c-21.943,16.196-48.065,24.555-75.233,24.555s-53.29-8.359-75.233-24.555 c-4.18-3.135-9.927-4.702-15.151-3.657c-41.796,5.747-79.412,29.257-102.922,64.784c-4.702,6.792-8.882,14.629-12.016,21.943 c-1.567,3.135-1.045,6.792,0.522,9.927c4.18,7.314,9.404,14.629,14.106,20.898c7.314,9.927,15.151,18.808,24.033,27.167 c7.314,7.314,15.673,14.106,24.033,20.898c41.273,30.825,90.906,47.02,142.106,47.02s100.833-16.196,142.106-47.02 c8.359-6.269,16.718-13.584,24.033-20.898c8.359-8.359,16.718-17.241,24.033-27.167c5.224-6.792,9.927-13.584,14.106-20.898 C436.8,341.682,437.322,338.024,435.755,334.89z"
+                              fill="#1d2d5b"
+                            />
+                          </g>
+                        </g>
+                      </svg>
+                    </a>
+                    <ul class="dropdown-menu dropdown-content">
+                      <li>
+                        <div
+                          style="
+                            padding: 13px 10px;
+                            background-color: rgba(29, 45, 91);
+                            color: #fff;
+                          "
+                        >
+                          Tester13 Tester13
+                        </div>
+                      </li>
+                      <li>
+                        <a href="https://lms.tuit.uz/profile/password"
+                          ><i class="fa fa-cog"></i>Profil sozlamalari</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="https://lms.tuit.uz/logout"
+                          onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                          ><i class="fa fa-sign-out"></i>Chiqish</a
+                        >
+                      </li>
+                      <form
+                        id="logout-form"
+                        action="https://lms.tuit.uz/logout"
+                        method="POST"
+                        style="display: none"
+                      >
+                        <input
+                          type="hidden"
+                          name="_token"
+                          value="Q02wDTyeSjHkXyVxzfmMSuCHa2gRMRAcrwPpttID"
+                        />
+                      </form>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <!-- /Page Header -->
+
+        <!-- Page Inner -->
+        <div class="page-inner">
+          <div class="page-title">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="page-title"></div>
+              </div>
+              <div class="col-xs-6">
+                <div class="page-title text-right page-title--space"></div>
+              </div>
+            </div>
+          </div>
+
+          <form
+            method="POST"
+            action="https://lms.tuit.uz/student/olympiad/test/167"
+            accept-charset="UTF-8"
+            id="finalTestForm"
+          >
+            <input
+              name="_token"
+              type="hidden"
+              value="M6tYYja6545ut6UEwKqxhnpuq6EAV8ziiZkOfJSZ"
+            />
+            <div class="panel">
+              <div class="row m-b-sm">
+                <div class="col-xs-6">
+                  <h1 class="breadcrumb-header mt-0">
+                    Ingliz tili I -
+                    <span class="text-info">Nabiyev Ilxomjon Sharifovich</span>
+                  </h1>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <div class="alert alert-success alert-change timer-badge">
+                    <i class="fa fa-clock-o"></i>
+                    <span id="timer">00:59:59</span>
+                  </div>
+                  <button type="submit" class="btn btn-danger">
+                    Imtihonni tugatish
+                  </button>
+                </div>
+              </div>
+
+              <div class="tabpanel">
+                <div class="over-x">
+                  <ul
+                    class="btn-group d-flex test-nav"
+                    role="tablist"
+                    aria-label="First group"
+                  >
+                    <li role="presentation" class="btn btn-default p-0 active">
+                      <a href="#tab1" role="tab" data-toggle="tab">1</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab2" role="tab" data-toggle="tab">2</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab3" role="tab" data-toggle="tab">3</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab4" role="tab" data-toggle="tab">4</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab5" role="tab" data-toggle="tab">5</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab6" role="tab" data-toggle="tab">6</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab7" role="tab" data-toggle="tab">7</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab8" role="tab" data-toggle="tab">8</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab9" role="tab" data-toggle="tab">9</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab10" role="tab" data-toggle="tab">10</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab11" role="tab" data-toggle="tab">11</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab12" role="tab" data-toggle="tab">12</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab13" role="tab" data-toggle="tab">13</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab14" role="tab" data-toggle="tab">14</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab15" role="tab" data-toggle="tab">15</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab16" role="tab" data-toggle="tab">16</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab17" role="tab" data-toggle="tab">17</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab18" role="tab" data-toggle="tab">18</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab19" role="tab" data-toggle="tab">19</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab20" role="tab" data-toggle="tab">20</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab21" role="tab" data-toggle="tab">21</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab22" role="tab" data-toggle="tab">22</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab23" role="tab" data-toggle="tab">23</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab24" role="tab" data-toggle="tab">24</a>
+                    </li>
+                    <li role="presentation" class="btn btn-default p-0">
+                      <a href="#tab25" role="tab" data-toggle="tab">25</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="tab-content">
+                  <div
+                    class="table-test tab-pane fade in active"
+                    role="tabpanel"
+                    id="tab1"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word to the definition:</p>
+                      <p>All the things that are part of a website.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test1-a"
+                            name="answers[1]"
+                            value="1"
+                          /><label for="test1-a"
+                            ><span class="test-variant">a</span>
+                            <p>HTML</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test1-b"
+                            name="answers[1]"
+                            value="2"
+                          /><label for="test1-b"
+                            ><span class="test-variant">b</span>
+                            <p>Feature</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test1-c"
+                            name="answers[1]"
+                            value="3"
+                          /><label for="test1-c"
+                            ><span class="test-variant">c</span>
+                            <p>Specification</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test1-d"
+                            name="answers[1]"
+                            value="4"
+                          /><label for="test1-d"
+                            ><span class="test-variant">d</span>
+                            <p>Content</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab2"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer::</p>
+                      <p>
+                        We can all get on the bus. There are only ______
+                        passengers on it now.
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test2-a"
+                            name="answers[2]"
+                            value="1"
+                          /><label for="test2-a"
+                            ><span class="test-variant">a</span>
+                            <p>a few</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test2-b"
+                            name="answers[2]"
+                            value="2"
+                          /><label for="test2-b"
+                            ><span class="test-variant">b</span>
+                            <p>much</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test2-c"
+                            name="answers[2]"
+                            value="3"
+                          /><label for="test2-c"
+                            ><span class="test-variant">c</span>
+                            <p>many</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test2-d"
+                            name="answers[2]"
+                            value="4"
+                          /><label for="test2-d"
+                            ><span class="test-variant">d</span>
+                            <p>a little</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab3"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        I haven&rsquo;t got the keys. Father has got ______ .
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test3-a"
+                            name="answers[3]"
+                            value="1"
+                          /><label for="test3-a"
+                            ><span class="test-variant">a</span>
+                            <p>her</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test3-b"
+                            name="answers[3]"
+                            value="2"
+                          /><label for="test3-b"
+                            ><span class="test-variant">b</span>
+                            <p>him</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test3-c"
+                            name="answers[3]"
+                            value="3"
+                          /><label for="test3-c"
+                            ><span class="test-variant">c</span>
+                            <p>it</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test3-d"
+                            name="answers[3]"
+                            value="4"
+                          /><label for="test3-d"
+                            ><span class="test-variant">d</span>
+                            <p>them</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab4"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        We are late. The teacher will get angry with ______.
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test4-a"
+                            name="answers[4]"
+                            value="1"
+                          /><label for="test4-a"
+                            ><span class="test-variant">a</span>
+                            <p>we</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test4-b"
+                            name="answers[4]"
+                            value="2"
+                          /><label for="test4-b"
+                            ><span class="test-variant">b</span>
+                            <p>I</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test4-c"
+                            name="answers[4]"
+                            value="3"
+                          /><label for="test4-c"
+                            ><span class="test-variant">c</span>
+                            <p>they</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test4-d"
+                            name="answers[4]"
+                            value="4"
+                          /><label for="test4-d"
+                            ><span class="test-variant">d</span>
+                            <p>us</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab5"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word to the definition:</p>
+                      <p>To make a website available for people to visit.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test5-a"
+                            name="answers[5]"
+                            value="1"
+                          /><label for="test5-a"
+                            ><span class="test-variant">a</span>
+                            <p>Enter</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test5-b"
+                            name="answers[5]"
+                            value="2"
+                          /><label for="test5-b"
+                            ><span class="test-variant">b</span>
+                            <p>Content</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test5-c"
+                            name="answers[5]"
+                            value="3"
+                          /><label for="test5-c"
+                            ><span class="test-variant">c</span>
+                            <p>Publish</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test5-d"
+                            name="answers[5]"
+                            value="4"
+                          /><label for="test5-d"
+                            ><span class="test-variant">d</span>
+                            <p>Monitor</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab6"
+                  >
+                    <div class="test-question">
+                      <p><strong>Choose the correct answer.</strong></p>
+                      <p>The Buckingham Palace _____ lots of rooms.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test6-a"
+                            name="answers[6]"
+                            value="1"
+                          /><label for="test6-a"
+                            ><span class="test-variant">a</span>
+                            <p>has</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test6-b"
+                            name="answers[6]"
+                            value="2"
+                          /><label for="test6-b"
+                            ><span class="test-variant">b</span>
+                            <p>having</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test6-c"
+                            name="answers[6]"
+                            value="3"
+                          /><label for="test6-c"
+                            ><span class="test-variant">c</span>
+                            <p>have</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test6-d"
+                            name="answers[6]"
+                            value="4"
+                          /><label for="test6-d"
+                            ><span class="test-variant">d</span>
+                            <p>to have</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab7"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>Give me two ______ cake, please.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test7-a"
+                            name="answers[7]"
+                            value="1"
+                          /><label for="test7-a"
+                            ><span class="test-variant">a</span>
+                            <p>piece</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test7-b"
+                            name="answers[7]"
+                            value="2"
+                          /><label for="test7-b"
+                            ><span class="test-variant">b</span>
+                            <p>slice</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test7-c"
+                            name="answers[7]"
+                            value="3"
+                          /><label for="test7-c"
+                            ><span class="test-variant">c</span>
+                            <p>pieces</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test7-d"
+                            name="answers[7]"
+                            value="4"
+                          /><label for="test7-d"
+                            ><span class="test-variant">d</span>
+                            <p>pieces of</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab8"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>I can see a lot of ______ outside the building.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test8-a"
+                            name="answers[8]"
+                            value="1"
+                          /><label for="test8-a"
+                            ><span class="test-variant">a</span>
+                            <p>child</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test8-b"
+                            name="answers[8]"
+                            value="2"
+                          /><label for="test8-b"
+                            ><span class="test-variant">b</span>
+                            <p>people</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test8-c"
+                            name="answers[8]"
+                            value="3"
+                          /><label for="test8-c"
+                            ><span class="test-variant">c</span>
+                            <p>person</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test8-d"
+                            name="answers[8]"
+                            value="4"
+                          /><label for="test8-d"
+                            ><span class="test-variant">d</span>
+                            <p>&nbsp;man</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab9"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>All the ______ are following the man.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test9-a"
+                            name="answers[9]"
+                            value="1"
+                          /><label for="test9-a"
+                            ><span class="test-variant">a</span>
+                            <p>children</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test9-b"
+                            name="answers[9]"
+                            value="2"
+                          /><label for="test9-b"
+                            ><span class="test-variant">b</span>
+                            <p>dog</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test9-c"
+                            name="answers[9]"
+                            value="3"
+                          /><label for="test9-c"
+                            ><span class="test-variant">c</span>
+                            <p>policeman</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test9-d"
+                            name="answers[9]"
+                            value="4"
+                          /><label for="test9-d"
+                            ><span class="test-variant">d</span>
+                            <p>woman</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab10"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word for the definition:</p>
+                      <ol start="5">
+                        <li>
+                          The number of successful visits or visits which fulfil
+                          the site&rsquo;s aim/goal (number of sales, searches,
+                          downloads, etc.)
+                        </li>
+                      </ol>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test10-a"
+                            name="answers[10]"
+                            value="1"
+                          /><label for="test10-a"
+                            ><span class="test-variant">a</span>
+                            <p>Event tracking overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test10-b"
+                            name="answers[10]"
+                            value="2"
+                          /><label for="test10-b"
+                            ><span class="test-variant">b</span>
+                            <p>Goals overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test10-c"
+                            name="answers[10]"
+                            value="3"
+                          /><label for="test10-c"
+                            ><span class="test-variant">c</span>
+                            <p>Client overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test10-d"
+                            name="answers[10]"
+                            value="4"
+                          /><label for="test10-d"
+                            ><span class="test-variant">d</span>
+                            <p>Traffic overview</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab11"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        Sanjar dropped some books, so I picked ______ up for
+                        him.
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test11-a"
+                            name="answers[11]"
+                            value="1"
+                          /><label for="test11-a"
+                            ><span class="test-variant">a</span>
+                            <p>they</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test11-b"
+                            name="answers[11]"
+                            value="2"
+                          /><label for="test11-b"
+                            ><span class="test-variant">b</span>
+                            <p>them</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test11-c"
+                            name="answers[11]"
+                            value="3"
+                          /><label for="test11-c"
+                            ><span class="test-variant">c</span>
+                            <p>it</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test11-d"
+                            name="answers[11]"
+                            value="4"
+                          /><label for="test11-d"
+                            ><span class="test-variant">d</span>
+                            <p>its</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab12"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>Take Janet and Anna to _______ rooms.</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test12-a"
+                            name="answers[12]"
+                            value="1"
+                          /><label for="test12-a"
+                            ><span class="test-variant">a</span>
+                            <p>her</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test12-b"
+                            name="answers[12]"
+                            value="2"
+                          /><label for="test12-b"
+                            ><span class="test-variant">b</span>
+                            <p>their</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test12-c"
+                            name="answers[12]"
+                            value="3"
+                          /><label for="test12-c"
+                            ><span class="test-variant">c</span>
+                            <p>them</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test12-d"
+                            name="answers[12]"
+                            value="4"
+                          /><label for="test12-d"
+                            ><span class="test-variant">d</span>
+                            <p>they</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab13"
+                  >
+                    <div class="test-question">
+                      <p>
+                        Information about visitors&rsquo; IP addresses,
+                        geography, country, time zone, language, city, visitor
+                        maps
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test13-a"
+                            name="answers[13]"
+                            value="1"
+                          /><label for="test13-a"
+                            ><span class="test-variant">a</span>
+                            <p>Traffic overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test13-b"
+                            name="answers[13]"
+                            value="2"
+                          /><label for="test13-b"
+                            ><span class="test-variant">b</span>
+                            <p>Graphical overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test13-c"
+                            name="answers[13]"
+                            value="3"
+                          /><label for="test13-c"
+                            ><span class="test-variant">c</span>
+                            <p>Content overview</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test13-d"
+                            name="answers[13]"
+                            value="4"
+                          /><label for="test13-d"
+                            ><span class="test-variant">d</span>
+                            <p>Visitors overview</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab14"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        I put ______ sugar on the fruit. I do not like sugar
+                        very much.
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test14-a"
+                            name="answers[14]"
+                            value="1"
+                          /><label for="test14-a"
+                            ><span class="test-variant">a</span>
+                            <p>a little</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test14-b"
+                            name="answers[14]"
+                            value="2"
+                          /><label for="test14-b"
+                            ><span class="test-variant">b</span>
+                            <p>a few</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test14-c"
+                            name="answers[14]"
+                            value="3"
+                          /><label for="test14-c"
+                            ><span class="test-variant">c</span>
+                            <p>many</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test14-d"
+                            name="answers[14]"
+                            value="4"
+                          /><label for="test14-d"
+                            ><span class="test-variant">d</span>
+                            <p>much</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab15"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>Look at these books. Are ______ yours?</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test15-a"
+                            name="answers[15]"
+                            value="1"
+                          /><label for="test15-a"
+                            ><span class="test-variant">a</span>
+                            <p>they</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test15-b"
+                            name="answers[15]"
+                            value="2"
+                          /><label for="test15-b"
+                            ><span class="test-variant">b</span>
+                            <p>them</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test15-c"
+                            name="answers[15]"
+                            value="3"
+                          /><label for="test15-c"
+                            ><span class="test-variant">c</span>
+                            <p>that</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test15-d"
+                            name="answers[15]"
+                            value="4"
+                          /><label for="test15-d"
+                            ><span class="test-variant">d</span>
+                            <p>this</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab16"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        Do you want those shoes? I don&rsquo;t want ______ .
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test16-a"
+                            name="answers[16]"
+                            value="1"
+                          /><label for="test16-a"
+                            ><span class="test-variant">a</span>
+                            <p>its</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test16-b"
+                            name="answers[16]"
+                            value="2"
+                          /><label for="test16-b"
+                            ><span class="test-variant">b</span>
+                            <p>them</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test16-c"
+                            name="answers[16]"
+                            value="3"
+                          /><label for="test16-c"
+                            ><span class="test-variant">c</span>
+                            <p>they</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test16-d"
+                            name="answers[16]"
+                            value="4"
+                          /><label for="test16-d"
+                            ><span class="test-variant">d</span>
+                            <p>him</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab17"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word for the definition:</p>
+                      <p>someone who visits a website</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test17-a"
+                            name="answers[17]"
+                            value="1"
+                          /><label for="test17-a"
+                            ><span class="test-variant">a</span>
+                            <p>attendant (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test17-b"
+                            name="answers[17]"
+                            value="2"
+                          /><label for="test17-b"
+                            ><span class="test-variant">b</span>
+                            <p>reporter (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test17-c"
+                            name="answers[17]"
+                            value="3"
+                          /><label for="test17-c"
+                            ><span class="test-variant">c</span>
+                            <p>collegue (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test17-d"
+                            name="answers[17]"
+                            value="4"
+                          /><label for="test17-d"
+                            ><span class="test-variant">d</span>
+                            <p>visitor (n)</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab18"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word for the definition:</p>
+                      <p>used to describe movement on the&nbsp; Internet</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test18-a"
+                            name="answers[18]"
+                            value="1"
+                          /><label for="test18-a"
+                            ><span class="test-variant">a</span>
+                            <p>report (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test18-b"
+                            name="answers[18]"
+                            value="2"
+                          /><label for="test18-b"
+                            ><span class="test-variant">b</span>
+                            <p>profile (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test18-c"
+                            name="answers[18]"
+                            value="3"
+                          /><label for="test18-c"
+                            ><span class="test-variant">c</span>
+                            <p>number (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test18-d"
+                            name="answers[18]"
+                            value="4"
+                          /><label for="test18-d"
+                            ><span class="test-variant">d</span>
+                            <p>traffic (n)</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab19"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word for the definition:</p>
+                      <p>
+                        an amount of something that you can count, for example
+                        the number of&nbsp; times someone visits a website
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test19-a"
+                            name="answers[19]"
+                            value="1"
+                          /><label for="test19-a"
+                            ><span class="test-variant">a</span>
+                            <p>profile (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test19-b"
+                            name="answers[19]"
+                            value="2"
+                          /><label for="test19-b"
+                            ><span class="test-variant">b</span>
+                            <p>report (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test19-c"
+                            name="answers[19]"
+                            value="3"
+                          /><label for="test19-c"
+                            ><span class="test-variant">c</span>
+                            <p>number (n)</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test19-d"
+                            name="answers[19]"
+                            value="4"
+                          /><label for="test19-d"
+                            ><span class="test-variant">d</span>
+                            <p>raffic (n)</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab20"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right word for the definition:</p>
+                      <p>Information in a computer</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test20-a"
+                            name="answers[20]"
+                            value="1"
+                          /><label for="test20-a"
+                            ><span class="test-variant">a</span>
+                            <p>Username</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test20-b"
+                            name="answers[20]"
+                            value="2"
+                          /><label for="test20-b"
+                            ><span class="test-variant">b</span>
+                            <p>Electronic data</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test20-c"
+                            name="answers[20]"
+                            value="3"
+                          /><label for="test20-c"
+                            ><span class="test-variant">c</span>
+                            <p>Protocol</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test20-d"
+                            name="answers[20]"
+                            value="4"
+                          /><label for="test20-d"
+                            ><span class="test-variant">d</span>
+                            <p>Digit</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab21"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>What does PDF stand for?</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test21-a"
+                            name="answers[21]"
+                            value="1"
+                          /><label for="test21-a"
+                            ><span class="test-variant">a</span>
+                            <p>Posting Document Format</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test21-b"
+                            name="answers[21]"
+                            value="2"
+                          /><label for="test21-b"
+                            ><span class="test-variant">b</span>
+                            <p>Portable Document Format</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test21-c"
+                            name="answers[21]"
+                            value="3"
+                          /><label for="test21-c"
+                            ><span class="test-variant">c</span>
+                            <p>Personal Document File</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test21-d"
+                            name="answers[21]"
+                            value="4"
+                          /><label for="test21-d"
+                            ><span class="test-variant">d</span>
+                            <p>Portable Document Form</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab22"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>What does &ldquo;PC&rdquo; stand for?</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test22-a"
+                            name="answers[22]"
+                            value="1"
+                          /><label for="test22-a"
+                            ><span class="test-variant">a</span>
+                            <p>Positive collection</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test22-b"
+                            name="answers[22]"
+                            value="2"
+                          /><label for="test22-b"
+                            ><span class="test-variant">b</span>
+                            <p>Powerful computer</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test22-c"
+                            name="answers[22]"
+                            value="3"
+                          /><label for="test22-c"
+                            ><span class="test-variant">c</span>
+                            <p>Personal computer</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test22-d"
+                            name="answers[22]"
+                            value="4"
+                          /><label for="test22-d"
+                            ><span class="test-variant">d</span>
+                            <p>Passive comparing</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab23"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>9:50</p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test23-a"
+                            name="answers[23]"
+                            value="1"
+                          /><label for="test23-a"
+                            ><span class="test-variant">a</span>
+                            <p>
+                              It is ten minutes to ten o&rsquo;clock.
+                            </p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test23-b"
+                            name="answers[23]"
+                            value="2"
+                          /><label for="test23-b"
+                            ><span class="test-variant">b</span>
+                            <p>
+                              It is nine minutes to five o&rsquo;clock
+                            </p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test23-c"
+                            name="answers[23]"
+                            value="3"
+                          /><label for="test23-c"
+                            ><span class="test-variant">c</span>
+                            <p>
+                              It is fifty minutes to ten o&rsquo;clock
+                            </p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test23-d"
+                            name="answers[23]"
+                            value="4"
+                          /><label for="test23-d"
+                            ><span class="test-variant">d</span>
+                            <p>
+                              It is fifty minutes to nine o&rsquo;clock
+                            </p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab24"
+                  >
+                    <div class="test-question">
+                      <p>Choose the right answer:</p>
+                      <p>
+                        The computer is cooled by a _______________. This
+                        prevents the processor from______.
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test24-a"
+                            name="answers[24]"
+                            value="1"
+                          /><label for="test24-a"
+                            ><span class="test-variant">a</span>
+                            <p>transformer / falling</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test24-b"
+                            name="answers[24]"
+                            value="2"
+                          /><label for="test24-b"
+                            ><span class="test-variant">b</span>
+                            <p>protector / disconnect</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test24-c"
+                            name="answers[24]"
+                            value="3"
+                          /><label for="test24-c"
+                            ><span class="test-variant">c</span>
+                            <p>supply /&nbsp; shock</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test24-d"
+                            name="answers[24]"
+                            value="4"
+                          /><label for="test24-d"
+                            ><span class="test-variant">d</span>
+                            <p>fan / overheating</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+
+                  <div
+                    class="table-test tab-pane fade in"
+                    role="tabpanel"
+                    id="tab25"
+                  >
+                    <div class="test-question">
+                      <p>Choose the correct answer.</p>
+                      <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; How _____ people live in
+                        your house?
+                      </p>
+                    </div>
+                    <div class="label label-info">Ball:4</div>
+                    <div class="test-content m-t-xs">
+                      <ul class="answers-test testing">
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test25-a"
+                            name="answers[25]"
+                            value="1"
+                          /><label for="test25-a"
+                            ><span class="test-variant">a</span>
+                            <p>many</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test25-b"
+                            name="answers[25]"
+                            value="2"
+                          /><label for="test25-b"
+                            ><span class="test-variant">b</span>
+                            <p>any</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test25-c"
+                            name="answers[25]"
+                            value="3"
+                          /><label for="test25-c"
+                            ><span class="test-variant">c</span>
+                            <p>much</p></label
+                          >
+                        </li>
+                        <li>
+                          <input
+                            type="radio"
+                            class="test-radio"
+                            id="test25-d"
+                            name="answers[25]"
+                            value="4"
+                          /><label for="test25-d"
+                            ><span class="test-variant">d</span>
+                            <p>a lot of</p></label
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                    <small
+                      ><i
+                        >Savol muallifi: Nabiyev Ilxomjon Sharifovich</i
+                      ></small
+                    >
+                  </div>
+                </div>
+
+                <div class="text-align">
+                  <p class="m-t-lg">
+                    <b class="js-count-a">0</b>/<b class="js-count-q">0</b>
+                  </p>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btnPrevious">
+                      <i class="fa fa-arrow-left"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btnNext">
+                      <i class="fa fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="page-footer">
+            <div class="row">
+              <div class="col-xs-12 text-right">
+                <a
+                  href="https://t.me/joinchat/AAAAAE3uzCvQS5qsLRawWw"
+                  target="_blank"
+                  ><i class="fa fa-telegram f-s-20" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Page Inner -->
+      </div>
+      <!-- /Page Content -->
+    </div>
+    <!-- /Page Container -->
+
+    <!-- Javascripts -->
+    <script src="https://lms.tuit.uz/assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/metisMenu.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/plugins/switchery/switchery.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/space.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/toastify.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/pages/form-elements.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/select2.full.min.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/mask.js"></script>
+    <script src="https://lms.tuit.uz/assets/js/main.js?v=1.0"></script>
+    <script src="https://www.wiris.net/demo/plugins/app/WIRISplugins.js?viewer=image"></script>
+
+    <script>
+      $(document).ready(function () {
+        $(".js-count-q").html($(".test-nav li").length);
+        $(".js-count-a").html($(".test-radio:checked").length);
+
+        // Sahifa yuklanganda tanlangan javoblarni belgilash
+        $(".test-radio").each(function () {
+          if ($(this).is(":checked")) {
+            var navTab = $(this).closest(".table-test").attr("id");
+            $("[href='#" + navTab + "']")
+              .closest("li")
+              .removeClass("btn-default")
+              .addClass("btn-primary");
+          }
+        });
+
+        var selectedVals = {};
+        function getSelectedVals() {
+          $(".test-radio:checked").each(function () {
+            selectedVals[$(this).attr("name")] = $(this).val();
+          });
+        }
+        getSelectedVals();
+
+        // Javob tanlash
+        $(".test-radio").click(function () {
+          if (
+            selectedVals[$(this).attr("name")] !== undefined &&
+            selectedVals[$(this).attr("name")] != $(this).val()
+          ) {
+            var changeConfirm = confirm(
+              "Вы действительно хотите поменять свой выбор?"
+            );
+            if (!changeConfirm) {
+              $(
+                'input[name="' +
+                  $(this).attr("name") +
+                  '"][value="' +
+                  selectedVals[$(this).attr("name")] +
+                  '"]'
+              ).prop("checked", true);
+              return false;
+            }
+          }
+
+          var navTab = $(this).closest(".table-test").attr("id");
+          $(".js-count-a").html($(".test-radio:checked").length);
+          $("[href='#" + navTab + "']")
+            .closest("li")
+            .removeClass("btn-default")
+            .addClass("btn-primary");
+
+          getSelectedVals();
+          // Avto-o'tish yo'q — foydalanuvchi o'zi bosadi
+        });
+
+        // Tugmalar
+        $(".btnNext").click(function () {
+          $(".test-nav > .active").next("li").find("a").trigger("click");
+        });
+        $(".btnPrevious").click(function () {
+          $(".test-nav > .active").prev("li").find("a").trigger("click");
+        });
+
+        // Oxirgi yangilanish vaqtini ko'rsatish
+        var now = new Date();
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+        var year = now.getFullYear();
+        var hours = ("0" + now.getHours()).slice(-2);
+        var minutes = ("0" + now.getMinutes()).slice(-2);
+        $("#lastUpdate").html(
+          day + "." + month + "." + year + " | " + hours + ":" + minutes
+        );
+
+        // Timer: 1 soatlik (3597 sekunddan boshlab), yangilanganda davom etish uchun localStorage
+        function countdown() {
+          var remainingTime = localStorage.getItem("remainingTime");
+          if (!remainingTime) {
+            remainingTime = 3600;
+            localStorage.setItem("remainingTime", remainingTime);
+          } else {
+            remainingTime = parseInt(remainingTime);
+          }
+
+          var x = setInterval(function () {
+            if (remainingTime <= 0) {
+              clearInterval(x);
+              $("#timer").html("00:00:00");
+              localStorage.removeItem("remainingTime");
+              return;
+            }
+
+            remainingTime--;
+            localStorage.setItem("remainingTime", remainingTime);
+
+            var hours = Math.floor(remainingTime / 3600);
+            var minutes = Math.floor((remainingTime % 3600) / 60);
+            var seconds = remainingTime % 60;
+
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            $("#timer").html(hours + ":" + minutes + ":" + seconds);
+          }, 1000);
+        }
+        countdown();
+
+        // Sahifa yopilganda timer reset (unload event)
+        window.addEventListener("beforeunload", function () {
+          localStorage.removeItem("remainingTime");
+        });
+      });
+
+      // Bloklashlar
+      window.oncontextmenu = function () {
+        return false;
+      };
+      document.addEventListener(
+        "keydown",
+        function (event) {
+          var key = event.key || event.keyCode;
+          if (key == 123) {
+            return false;
+          } else if (
+            (event.ctrlKey && event.shiftKey && key == 73) ||
+            (event.ctrlKey && event.shiftKey && key == 74)
+          ) {
+            return false;
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
